@@ -24,17 +24,17 @@ account.addKeyPair(kp, "active");
 const oracleAddress = "Contract8RZcA6P6yhPiE38fkMeXH8bqsqqkhPQjsFxYFv9RFm76";
 
 
-const uploadHuobiPrice = async () => {
-  const url = 'https://api.huobi.pro/market/history/trade?symbol=iostusdt&size=1';
+const uploadBinancePrice = async () => {
+  const url = 'https://api.binance.com/api/v3/trades?symbol=IOSTUSDT&limit=1';
   const res = await request(url);
 
   if (res.statusCode == 200 && res.body) {
     const data = JSON.parse(res.body);
-    const price = data.data[0].data[0].price;
+    const price = data[0].price;
 
     const tx = iost.callABI(oracleAddress,
         "setPrice",
-        ["huobi", price.toString()]);
+        ["binance", price.toString()]);
     account.signTx(tx);
     const handler = new IOST.TxHandler(tx, rpc);
 
@@ -46,7 +46,7 @@ const uploadHuobiPrice = async () => {
 }
 
 setInterval(() => {
-  uploadHuobiPrice();
+  uploadBinancePrice();
 }, 60000);
 
-uploadHuobiPrice();
+uploadBinancePrice();
