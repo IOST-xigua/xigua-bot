@@ -21,8 +21,7 @@ const kp = new IOST.KeyPair(bs58.decode(process.env.IOST_PRIVATE_KEY));
 account.addKeyPair(kp, "owner");
 account.addKeyPair(kp, "active");
 
-const oracleAddress = "Contract8RZcA6P6yhPiE38fkMeXH8bqsqqkhPQjsFxYFv9RFm76";
-
+const oracleAddress = "Contract31zSoLKV2hgYHA7z2hvnnzPEtQKmUrkAPKQ5tTmQcepw";
 
 const uploadHuobiPrice = async () => {
   const url = 'https://api.huobi.pro/market/history/trade?symbol=iostusdt&size=1';

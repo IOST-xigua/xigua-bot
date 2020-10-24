@@ -21,8 +21,7 @@ const kp = new IOST.KeyPair(bs58.decode(process.env.IOST_PRIVATE_KEY));
 account.addKeyPair(kp, "owner");
 account.addKeyPair(kp, "active");
 
-const oracleAddress = "Contract8RZcA6P6yhPiE38fkMeXH8bqsqqkhPQjsFxYFv9RFm76";
-
+const oracleAddress = "Contract31zSoLKV2hgYHA7z2hvnnzPEtQKmUrkAPKQ5tTmQcepw";
 
 const uploadOKEXPrice = async () => {
   const url = 'https://www.okex.com/api/spot/v3/instruments/IOST-USDT/trades?limit=1';
